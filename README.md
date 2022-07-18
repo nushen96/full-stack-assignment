@@ -56,6 +56,8 @@ Run the backend server
 uvicorn backend.main:app --reload
 ```
 
+(Did not remove .env file for demo purposes)
+
 ## Assignment tasks
 
 ### Must-have
