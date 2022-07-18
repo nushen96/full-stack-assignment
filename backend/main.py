@@ -36,9 +36,15 @@ async def create_release(release: ReleaseSchemaCreateIn):
     last_record_id = await database.execute(query)
     return {**release.dict(), "id": last_record_id}
 
-@app.put("/releases/{_id}")
-def update_release(_id: int, data: dict):
-    return f"Update release with id {_id} using given data"
+@app.put("/releases/{_id}", response_model=ReleaseSchema)
+async def update_release(_id: int, release:ReleaseSchemaUpdateIn):
+    desired_release = await database.fetch_one(releases.select().where(releases.c.id == _id))
+    if not desired_release:
+        raise HTTPException(status_code=404, detail=f"Release with id {_id} not found")
+    query = releases.update().where(releases.c.id == _id).values(**release.dict(exclude_none=True))
+    await database.execute(query)
+    updated_release = await database.fetch_one(releases.select().where(releases.c.id == _id))
+    return updated_release
 
 @app.delete("/releases/{_id}")
 def delete_release(_id: int):
