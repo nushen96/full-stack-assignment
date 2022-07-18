@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from .schemas.Release import ReleaseSchema, ReleaseSchemaCreateIn, ReleaseSchemaUpdateIn
 from .db.database import database
 from .models.release_model import releases
@@ -23,9 +23,12 @@ async def get_releases():
     query = releases.select()
     return await database.fetch_all(query)
 
-@app.get("/releases/{_id}")
-def get_release(_id: int):
-    return f"Release with id {_id}"
+@app.get("/releases/{_id}", response_model=ReleaseSchema)
+async def get_release(_id: int):
+    desired_release = await database.fetch_one(releases.select().where(releases.c.id == _id))
+    if not desired_release:
+        raise HTTPException(status_code=404, detail=f"Release with id {_id} not found")
+    return desired_release
 
 @app.post("/releases/", response_model=ReleaseSchema)
 async def create_release(release: ReleaseSchemaCreateIn):
