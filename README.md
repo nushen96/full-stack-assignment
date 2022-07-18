@@ -44,6 +44,12 @@ have a database table to store each step, as long as you store, for each release
 
 ## Running the code
 
+Run MySQL Database with Docker
+
+```bash
+docker run --name mysql-docker -p 13306:3306 -e MYSQL_ROOT_PASSWORD=[YOUR_ROOT_PASSWORD] -d mysql:latest
+```
+
 Run the backend server
 
 ```bash
