@@ -1,11 +1,14 @@
 import databases
 from sqlalchemy import create_engine
+from starlette.config import Config
 
-user = "root"
-passwd = "letmein123"
-host = "localhost"
-port: "13306"
-db = "fullstack_assignment_db"
+config = Config(".env")
+
+user = config("DB_USER")
+passwd = config("MYSQL_ROOT_PASSWORD")
+host = config("DB_HOST")
+port:int = config("DB_PORT", cast=int)
+db = config("MYSQL_DATABASE")
 
 connection_string = 'mysql+pymysql://{}:{}@{}:{}'.format(user, passwd, host, port)
 db_connection_string = 'mysql+pymysql://{}:{}@{}:{}/{}?charset=utf8'.format(user, passwd, host, port, db)
