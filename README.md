@@ -44,7 +44,11 @@ have a database table to store each step, as long as you store, for each release
 
 ## Running the code
 
-*This section should be updated with the required instructions to run your project*.
+Run the backend server
+
+```bash
+uvicorn backend.main:app --reload
+```
 
 ## Assignment tasks
 
