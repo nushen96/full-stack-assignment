@@ -53,5 +53,7 @@ async def update_release(_id: int, release:ReleaseSchemaUpdateIn):
     return updated_release
 
 @app.delete("/releases/{_id}")
-def delete_release(_id: int):
-    return f"Delete release with id {_id}"
+async def delete_release(_id: int):
+    query = releases.delete().where(releases.c.id == _id)
+    rows_affected = await database.execute(query)
+    return rows_affected
