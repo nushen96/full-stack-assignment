@@ -50,6 +50,12 @@ Run MySQL Database with Docker
 docker run --name mysql-docker -p 13306:3306 -e MYSQL_ROOT_PASSWORD=[YOUR_ROOT_PASSWORD] -d mysql:latest
 ```
 
+Install requirements
+
+```bash
+pip install -r requirements.txt
+```
+
 Run the backend server
 
 ```bash
