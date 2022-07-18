@@ -3,18 +3,22 @@ from typing import Optional, List, Dict
 from enum import Enum
 from pydantic import BaseModel
 
+class CustomBaseModel(BaseModel):
+    class Config:
+        orm_mode = True
+
 class Status(str, Enum):
 	planned= "planned"
 	ongoing= "ongoing"
 	done= "done"
 
-class ReleaseSchemaUpdateIn(BaseModel):
+class ReleaseSchemaUpdateIn(CustomBaseModel):
     name: Optional[str]
     date: Optional[datetime]
     additional_info: Optional[str]
     steps: Optional[List[Dict]]
 
-class ReleaseSchemaCreateIn(BaseModel):
+class ReleaseSchemaCreateIn(CustomBaseModel):
     name: str
     date: datetime = datetime.now()
     additional_info: Optional[str]
@@ -28,7 +32,7 @@ class ReleaseSchemaCreateIn(BaseModel):
 		{"label": "Deployed in production", "status": "off"},
 	]
 
-class ReleaseSchema(BaseModel):
+class ReleaseSchema(CustomBaseModel):
     id: int
     name: str
     date: datetime = datetime.now()
