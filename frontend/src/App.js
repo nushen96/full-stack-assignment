@@ -1,4 +1,7 @@
 import ReleasesList from "./screens/ReleasesList";
+import EditRelease from "./screens/EditRelease";
+import NewRelease from "./screens/NewRelease";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
@@ -8,7 +11,11 @@ function App() {
         <h3>Your all-in one release checklist tool</h3>
       </div>
       <div className="app-content">
-        <ReleasesList/>
+        <Routes>
+          <Route path="/" element={<ReleasesList />} />
+          <Route path="/create" element={<NewRelease />}/>
+          <Route path="/edit" element={<EditRelease />}/>
+        </Routes>
       </div>
     </div>
   );
