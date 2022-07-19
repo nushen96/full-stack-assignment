@@ -62,6 +62,13 @@ Run the backend server
 uvicorn backend.main:app --reload
 ```
 
+Run the frontend app
+
+```bash
+cd frontend
+npm start
+```
+
 (Did not remove .env file for demo purposes)
 
 ## Assignment tasks
