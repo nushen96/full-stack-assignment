@@ -3,6 +3,7 @@ import ContentHeader from "../components/ContentHeader";
 import { useState } from "react";
 import { statusBoolToStr, statusStrToBool } from "../utils/stepsUtils";
 import { FaCheck } from "react-icons/fa";
+import { FaTrash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -50,9 +51,23 @@ export default function EditRelease() {
       });
   }
 
+  function deleteRelease() {
+    axios
+      .delete(`http://localhost:8000/releases/${params.id}`)
+      .then((response) => {
+        navigate("/");
+      });
+  }
+
   return (
     <div className="content-container">
-      <ContentHeader crumbs={crumbs} />
+      <ContentHeader
+        crumbs={crumbs}
+        hasButton={true}
+        buttonText="Delete"
+        buttonIcon={<FaTrash />}
+        buttonAction={deleteRelease}
+      />
       <div className="content-body">
         <div className="edit-form">
           <div className="form-row">
