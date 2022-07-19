@@ -5,11 +5,17 @@ import { FaTrash } from "react-icons/fa";
 import { FaPlusCircle } from "react-icons/fa";
 import { formatDate } from "../utils/formatDate";
 import ContentHeader from "../components/ContentHeader";
+import {useNavigate} from "react-router-dom"
 
-const crumbs = [{label: "All releases", link:"home"}]
+const crumbs = [{label: "All releases", link:"/"}]
 
 export default function ReleasesList() {
+    let navigate = useNavigate();
   const [releases, setReleases] = useState([]);
+
+  function navigateToCreate() {
+      navigate("/create")
+  }
 
   useEffect(() => {
     axios("http://localhost:8000/releases/")
@@ -22,7 +28,7 @@ export default function ReleasesList() {
   }, []);
   return (
     <div className="content-container">
-        <ContentHeader crumbs={crumbs} buttonText="New Release" buttonIcon={<FaPlusCircle/>}/>
+        <ContentHeader crumbs={crumbs} buttonText="New Release" buttonIcon={<FaPlusCircle/>} buttonAction={navigateToCreate}/>
       {releases.length === 0 ? (
         <p>No release for now.</p>
       ) : (

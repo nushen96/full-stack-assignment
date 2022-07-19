@@ -4,7 +4,7 @@ export default function ContentHeader({ crumbs, buttonText, buttonIcon, buttonAc
   return (
     <div className="content-header-container">
       <Breadcrumb crumbs={crumbs}/>
-      <button className="button-with-icon primary-button" onClick={() => buttonAction()}>
+      <button className="button-with-icon primary-button" onClick={buttonAction}>
           <p>{buttonText}</p>
           {buttonIcon}
       </button>
