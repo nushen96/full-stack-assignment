@@ -17,6 +17,10 @@ export default function ReleasesList() {
       navigate("/create")
   }
 
+  function navigateToEdit(release) {
+      navigate(`/edit/${release.id}`, {state:release})
+  }
+
   useEffect(() => {
     axios("http://localhost:8000/releases/")
       .then((response) => {
@@ -42,13 +46,13 @@ export default function ReleasesList() {
             <th>&nbsp;</th>
             <th>&nbsp;</th>
           </tr>
-          {releases.map(({ name, date, status }) => (
+          {releases.map((release) => (
             <tr>
-              <td>{name}</td>
-              <td>{formatDate(date)}</td>
-              <td>{status}</td>
+              <td>{release.name}</td>
+              <td>{formatDate(release.date)}</td>
+              <td>{release.status}</td>
               <td>
-                <button className="button-with-icon action-button">
+                <button className="button-with-icon action-button" onClick={() => navigateToEdit(release)}>
                   <p>Edit</p>
                   <FaPencilAlt />
                 </button>

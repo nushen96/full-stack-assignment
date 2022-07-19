@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
 
 :root {
-  --primary-color: rgb(99,88,236);
-  --primary-color-light: rgb(203,200,245);
+  --primary-color: rgb(99, 88, 236);
+  --primary-color-light: rgb(203, 200, 245);
   --gray1: #555;
-  --gray2: rgb(248,249,250);
-  --gray3: rgb(200,200,200);
+  --gray2: rgb(248, 249, 250);
+  --gray3: rgb(200, 200, 200);
 }
 
 *,
@@ -14,7 +14,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   color: var(--gray1);
 }
 
@@ -33,7 +33,7 @@ button:disabled {
 
 .app-header {
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   align-items: center;
   gap: 1rem;
 }
@@ -124,11 +124,11 @@ button:disabled {
 
 .breadcrumb-container .breadcrumb-element {
   text-decoration: none;
-  color: var(--primary-color)
+  color: var(--primary-color);
 }
 
 .breadcrumb-container .breadcrumb-element::after {
-  content:">";
+  content: ">";
   margin-left: 0.2rem;
   color: var(--primary-color);
 }
@@ -139,7 +139,7 @@ button:disabled {
 }
 
 .breadcrumb-container .breadcrumb-element:last-child::after {
-  content:""
+  content: "";
 }
 
 .creation-form {
@@ -154,7 +154,8 @@ button:disabled {
   gap: 0.3rem;
 }
 
-.form-element input {
+.form-element input,
+.form-element textarea {
   border: 1px solid var(--gray3);
   padding: 0.5rem 0.5rem;
 }
@@ -167,4 +168,36 @@ button:disabled {
 .form-element label {
   font-size: 0.8rem;
   font-weight: 700;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.edit-form .form-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.edit-form textarea {
+  resize: none;
+}
+
+.steps-list-element {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.steps-list-element label {
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.form-row-spaced {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 }

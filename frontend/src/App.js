@@ -14,7 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<ReleasesList />} />
           <Route path="/create" element={<NewRelease />}/>
-          <Route path="/edit" element={<EditRelease />}/>
+          <Route path="/edit/:id" element={<EditRelease />}/>
         </Routes>
       </div>
     </div>
