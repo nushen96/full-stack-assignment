@@ -22,7 +22,7 @@ export default function ReleasesList() {
   }, []);
   return (
     <div className="content-container">
-        <ContentHeader crumbs={crumbs} buttonIcon={<FaPlusCircle/>}/>
+        <ContentHeader crumbs={crumbs} buttonText="New Release" buttonIcon={<FaPlusCircle/>}/>
       {releases.length === 0 ? (
         <p>No release for now.</p>
       ) : (
