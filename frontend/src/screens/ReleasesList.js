@@ -28,9 +28,11 @@ export default function ReleasesList() {
   }, []);
   return (
     <div className="content-container">
-        <ContentHeader crumbs={crumbs} buttonText="New Release" buttonIcon={<FaPlusCircle/>} buttonAction={navigateToCreate}/>
+        <ContentHeader crumbs={crumbs} hasButton={true} buttonText="New Release" buttonIcon={<FaPlusCircle/>} buttonAction={navigateToCreate}/>
       {releases.length === 0 ? (
-        <p>No release for now.</p>
+        <div className="content-body">
+            <p>No release for now.</p>
+        </div>
       ) : (
         <table className="content-table">
           <tr>
