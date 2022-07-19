@@ -7,11 +7,6 @@ import { FaTrash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const crumbs = [
-  { label: "All releases", link: "/" },
-  { label: "New release", link: "/create" },
-];
-
 export default function EditRelease() {
   const params = useParams();
   const location = useLocation();
@@ -23,6 +18,11 @@ export default function EditRelease() {
   const [newAdditionalInfo, setNewAdditionalInfo] = useState(
     additional_info || ""
   );
+  const crumbs = [
+    { label: "All releases", link: "/" },
+    { label: name, link: "/create" },
+  ];
+  
 
   function handleStepChange(checked, label) {
     const tempSteps = newSteps.map((step) => {
