@@ -2,7 +2,11 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { FaPencilAlt } from "react-icons/fa";
 import { FaTrash } from "react-icons/fa";
+import { FaPlusCircle } from "react-icons/fa";
 import { formatDate } from "../utils/formatDate";
+import ContentHeader from "../components/ContentHeader";
+
+const crumbs = [{label: "All releases", link:"home"}]
 
 export default function ReleasesList() {
   const [releases, setReleases] = useState([]);
@@ -17,7 +21,8 @@ export default function ReleasesList() {
       });
   }, []);
   return (
-    <div>
+    <div className="content-container">
+        <ContentHeader crumbs={crumbs} buttonIcon={<FaPlusCircle/>}/>
       {releases.length === 0 ? (
         <p>No release for now.</p>
       ) : (

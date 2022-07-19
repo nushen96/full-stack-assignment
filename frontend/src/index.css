@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
 
+:root {
+  --primary-color: rgb(99,88,236);
+  --primary-color-light: rgb(203,200,245);
+  --gray1: #333;
+  --gray2: rgb(248,249,250);
+  --gray3: rgb(200,200,200);
+}
+
 *,
 *::before,
 *::after {
@@ -7,7 +15,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
-  color: #333;
+  color: var(--gray1);
 }
 
 .app-container {
@@ -42,7 +50,7 @@
 
 .content-table td,
 .content-table th {
-  border: 1px solid #333;
+  border: 1px solid var(--gray3);
   text-align: left;
   padding: 0.5rem;
 }
@@ -53,7 +61,10 @@
   align-items: center;
   gap: 1rem;
   padding: 0.7rem 0.5rem;
-  font-size: inherit;
+  font-size: 0.8rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
 
 .action-button {
@@ -61,4 +72,55 @@
   border: none;
   cursor: pointer;
   width: 100%;
+}
+
+.primary-button {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+.primary-button * {
+  color: #fff;
+}
+
+.content-container {
+  max-width: 648px;
+}
+
+.content-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1rem;
+  width: 100%;
+  background-color: var(--gray2);
+  border: 1px solid var(--gray3);
+  border-bottom: none;
+}
+
+.breadcrumb-container {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  font-size: 0.9rem;
+}
+
+.breadcrumb-container .breadcrumb-element {
+  text-decoration: none;
+  color: var(--primary-color)
+}
+
+.breadcrumb-container .breadcrumb-element::after {
+  content:">";
+  margin-left: 0.2rem;
+  color: var(--primary-color);
+}
+
+.breadcrumb-container .breadcrumb-element:last-child {
+  color: var(--primary-color-light);
+  pointer-events: none;
+}
+
+.breadcrumb-container .breadcrumb-element:last-child::after {
+  content:""
 }
