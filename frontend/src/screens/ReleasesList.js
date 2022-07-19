@@ -21,6 +21,14 @@ export default function ReleasesList() {
       navigate(`/edit/${release.id}`, {state:release})
   }
 
+  function deleteRelease(id) {
+    axios
+      .delete(`http://localhost:8000/releases/${id}`)
+      .then((response) => {
+        window.location.reload()
+      });
+  }
+
   useEffect(() => {
     axios("http://localhost:8000/releases/")
       .then((response) => {
@@ -58,7 +66,7 @@ export default function ReleasesList() {
                 </button>
               </td>
               <td>
-                <button className="button-with-icon action-button">
+                <button className="button-with-icon action-button" onClick={() => deleteRelease(release.id)}>
                   <p>Delete</p>
                   <FaTrash />
                 </button>
