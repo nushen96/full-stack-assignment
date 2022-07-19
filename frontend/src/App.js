@@ -1,3 +1,5 @@
+import ReleasesList from "./screens/ReleasesList";
+
 function App() {
   return (
     <div className="app-container">
@@ -6,7 +8,7 @@ function App() {
         <h3>Your all-in one release checklist tool</h3>
       </div>
       <div className="app-content">
-        Content
+        <ReleasesList/>
       </div>
     </div>
   );
