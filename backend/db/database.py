@@ -6,7 +6,7 @@ config = Config(".env")
 
 user = config("DB_USER")
 passwd = config("MYSQL_ROOT_PASSWORD")
-host = config("DB_HOST")
+host = config("MYSQL_HOST_IP")
 port:int = config("DB_PORT", cast=int)
 db = config("MYSQL_DATABASE")
 
