@@ -52,14 +52,10 @@ docker run --name mysql-docker -p 13306:3306 -e MYSQL_ROOT_PASSWORD=[YOUR_ROOT_P
 
 Install requirements
 
-```bash
-pip install -r requirements.txt
-```
-
 Run the backend server
 
 ```bash
-uvicorn backend.main:app --reload
+docker-compose up --build
 ```
 
 Run the frontend app
